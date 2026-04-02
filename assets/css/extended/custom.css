@@ -1,31 +1,52 @@
 /* ==========================================================================
    Custom styles — minimalist, typography-forward
-   Inspired by soap.coffee/~lthms with more sophisticated fonts
+   Inspired by soap.coffee/~lthms with sophisticated fonts
    ========================================================================== */
 
 /* -- Fonts ---------------------------------------------------------------- */
 @import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300..900;1,8..60,300..900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
-/* -- Root variables ------------------------------------------------------- */
+/* -- Override PaperMod theme variables ------------------------------------ */
 :root {
-  --accent: #c9a87c;          /* warm gold — subtle, sophisticated */
-  --accent-hover: #f5e6d0;    /* light peach fill on hover */
+  --gap: 24px;
+  --radius: 0;
+  --theme: #fff;
+  --entry: #fff;
+  --primary: #111;
+  --secondary: #888;
+  --tertiary: #f0f0f0;
+  --content: #333;
+  --code-block-bg: #fafafa;
+  --code-bg: #f5f5f5;
+  --border: #e8e8e8;
+
+  /* custom */
+  --accent: #b08850;
+  --accent-hover: #f0e4d0;
   --border-light: #e0e0e0;
-  --text-body: #1a1a1a;
-  --text-secondary: #666;
-  --bg: #fafafa;
-  --max-width: 58rem;
+  --text-body: #222;
+  --text-secondary: #777;
+  --max-width: 56rem;
   --content-width: 38rem;
   --line-height: 1.8;
 }
 
 [data-theme="dark"] {
-  --accent: #d4a96a;
-  --accent-hover: rgba(212, 169, 106, 0.15);
-  --border-light: #333;
-  --text-body: #d4d4d4;
-  --text-secondary: #999;
-  --bg: #1a1a1a;
+  --theme: #161616;
+  --entry: #161616;
+  --primary: #ddd;
+  --secondary: #888;
+  --tertiary: #222;
+  --content: #bbb;
+  --code-block-bg: #1c1c1c;
+  --code-bg: #222;
+  --border: #2a2a2a;
+
+  --accent: #c8a060;
+  --accent-hover: rgba(200, 160, 96, 0.12);
+  --border-light: #2a2a2a;
+  --text-body: #d0d0d0;
+  --text-secondary: #888;
 }
 
 /* -- Base typography ------------------------------------------------------ */
@@ -33,39 +54,41 @@ body {
   font-family: 'Source Serif 4', 'Georgia', serif;
   line-height: var(--line-height);
   color: var(--text-body);
+  background: var(--theme);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* -- Headings: clean sans-serif ------------------------------------------- */
+/* -- Headings ------------------------------------------------------------- */
 h1, h2, h3, h4, h5, h6,
 .post-title,
 .entry-hint-parent {
   font-family: 'Inter', system-ui, sans-serif;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: -0.02em;
   line-height: 1.3;
 }
 
 h1, .post-title {
-  font-size: 2rem;
+  font-size: 1.75rem;
+  font-weight: 700;
 }
 
 h2 {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   margin-top: 2.5rem;
-  padding-bottom: 0.3rem;
+  padding-bottom: 0.4rem;
   border-bottom: 1px solid var(--border-light);
 }
 
 h3 {
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   margin-top: 2rem;
 }
 
 /* -- Links: animated underline fill --------------------------------------- */
 .post-content a,
-.home-sidebar a,
+.home-sidebar .profile-bio a,
 .home-content a {
   color: inherit;
   font-weight: 500;
@@ -74,122 +97,184 @@ h3 {
   background-position: 0 100%;
   background-size: 100% 2px;
   background-repeat: no-repeat;
-  transition: background-size 200ms ease;
+  transition: background-size 180ms ease;
 }
 
 .post-content a:hover,
-.home-sidebar a:hover,
+.home-sidebar .profile-bio a:hover,
 .home-content a:hover {
   background-size: 100% 100%;
 }
 
-/* -- Wider main for two-column homepage ----------------------------------- */
+/* ==========================================================================
+   HEADER — minimal: just name + toggles
+   ========================================================================== */
+.header {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 1.5rem 1.5rem 0;
+}
+
+.nav {
+  max-width: var(--max-width);
+}
+
+.logo a {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+#menu {
+  display: none;
+}
+
+/* Language switcher: very discreet */
+.lang-switch {
+  gap: 0;
+}
+
+.lang-switch li:first-of-type {
+  display: none; /* hide the "|" separator */
+}
+
+.lang-switch a {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.65rem;
+  font-weight: 400;
+  color: var(--text-secondary);
+  opacity: 0.4;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: opacity 180ms ease;
+}
+
+.lang-switch a:hover {
+  opacity: 1;
+}
+
+/* Theme toggle: subtler */
+#theme-toggle {
+  opacity: 0.4;
+  transition: opacity 180ms ease;
+}
+
+#theme-toggle:hover {
+  opacity: 1;
+}
+
+/* ==========================================================================
+   MAIN CONTENT AREA
+   ========================================================================== */
 .main {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 2rem 1.5rem;
 }
 
-/* -- Article pages: narrower ---------------------------------------------- */
-.post-content {
-  font-size: 1.05rem;
-  text-align: justify;
-  hyphens: auto;
-  max-width: var(--content-width);
-}
-
-/* -- Homepage: two-column layout ------------------------------------------ */
+/* ==========================================================================
+   HOMEPAGE — two-column layout
+   ========================================================================== */
 .home-layout {
   display: grid;
-  grid-template-columns: 16rem 1fr;
-  gap: 3rem;
+  grid-template-columns: 14rem 1fr;
+  gap: 4rem;
   align-items: start;
 }
 
 .home-sidebar {
   position: sticky;
-  top: 5rem;
-  padding-top: 0.5rem;
+  top: 3rem;
 }
 
 .profile-photo {
-  width: 120px;
-  height: 120px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
   border: 2px solid var(--border-light);
   display: block;
-  margin-bottom: 1rem;
+  margin-bottom: 1.2rem;
+  filter: grayscale(20%);
+  transition: filter 300ms ease;
 }
 
-.profile-name {
-  font-family: 'Inter', system-ui, sans-serif;
-  font-size: 1.1rem;
-  font-weight: 700;
-  margin: 0 0 0.5rem;
-  padding: 0;
-  border: none;
-  letter-spacing: -0.02em;
+.profile-photo:hover {
+  filter: grayscale(0%);
 }
 
 .profile-bio {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: var(--text-secondary);
   line-height: 1.6;
-  margin: 0 0 0.8rem;
+  margin: 0 0 0.6rem;
 }
 
 .home-sidebar .social-icons {
-  margin-top: 0.5rem;
+  margin-top: 0.8rem;
+}
+
+.home-sidebar .social-icons a {
+  color: var(--text-secondary);
+  opacity: 0.5;
+  transition: opacity 180ms ease;
+}
+
+.home-sidebar .social-icons a:hover {
+  opacity: 1;
 }
 
 .home-sidebar .social-icons a svg {
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
 }
 
-/* -- Sidebar navigation --------------------------------------------------- */
+/* Sidebar navigation */
 .sidebar-nav {
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
-  margin-top: 1.2rem;
-  padding-top: 1rem;
+  gap: 0.25rem;
+  margin-top: 1rem;
+  padding-top: 0.8rem;
   border-top: 1px solid var(--border-light);
 }
 
 .sidebar-nav a {
   font-family: 'Inter', system-ui, sans-serif;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 500;
   color: var(--text-secondary);
   text-decoration: none;
   background: none !important;
-  transition: color 200ms ease;
+  transition: color 180ms ease;
+  padding: 0.15rem 0;
 }
 
 .sidebar-nav a:hover {
   color: var(--text-body);
 }
 
+/* Section title */
 .home-section-title {
   font-family: 'Inter', system-ui, sans-serif;
-  font-size: 1rem;
+  font-size: 0.75rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
   color: var(--text-secondary);
   border-bottom: 1px solid var(--border-light);
-  padding-bottom: 0.5rem;
+  padding-bottom: 0.6rem;
   margin-top: 0;
   margin-bottom: 0;
 }
 
+/* Post entries on homepage */
 .home-content .post-entry {
   border: none;
   border-bottom: 1px solid var(--border-light);
   border-radius: 0;
   background: transparent;
-  padding: 1.2rem 0;
+  padding: 1rem 0;
   margin: 0;
 }
 
@@ -199,9 +284,9 @@ h3 {
 
 .home-content .entry-header h3 {
   font-family: 'Inter', system-ui, sans-serif;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 600;
-  margin: 0 0 0.3rem;
+  margin: 0 0 0.2rem;
   line-height: 1.4;
 }
 
@@ -214,7 +299,7 @@ h3 {
 }
 
 .home-content .entry-content {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: var(--text-secondary);
   margin: 0;
 }
@@ -224,10 +309,10 @@ h3 {
 }
 
 .home-content .entry-footer {
-  margin-top: 0.3rem;
+  margin-top: 0.2rem;
 }
 
-/* Mobile: stack sidebar on top */
+/* Mobile */
 @media (max-width: 768px) {
   .home-layout {
     grid-template-columns: 1fr;
@@ -236,78 +321,99 @@ h3 {
 
   .home-sidebar {
     position: static;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 1rem;
+    text-align: center;
   }
 
   .profile-photo {
-    width: 80px;
-    height: 80px;
+    margin: 0 auto 1rem;
   }
 
-  .profile-name,
-  .profile-bio {
-    flex-basis: calc(100% - 96px);
+  .sidebar-nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+    justify-content: center;
+  }
+
+  .home-sidebar .social-icons {
+    justify-content: center;
   }
 }
 
-/* -- Post metadata: lighter, smaller -------------------------------------- */
+/* ==========================================================================
+   ARTICLE PAGES
+   ========================================================================== */
+.post-content {
+  font-size: 1.05rem;
+  text-align: justify;
+  hyphens: auto;
+  max-width: var(--content-width);
+}
+
+.post-single {
+  max-width: var(--content-width);
+}
+
 .post-meta {
   font-family: 'Inter', system-ui, sans-serif;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: var(--text-secondary);
 }
 
-/* -- Header: minimal, no menu --------------------------------------------- */
-.header {
-  max-width: var(--max-width);
-  margin: 0 auto;
+/* Translation list on articles */
+.i18n_list a {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.8rem;
 }
 
-.nav {
-  max-width: var(--max-width);
+/* Breadcrumbs */
+.breadcrumbs {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
 }
 
-#menu {
-  display: none;
-}
-
-/* -- Code blocks ---------------------------------------------------------- */
+/* ==========================================================================
+   CODE
+   ========================================================================== */
 code {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.88em;
+  font-size: 0.85em;
 }
 
 .post-content pre {
   border: 1px solid var(--border-light);
-  border-radius: 4px;
+  border-radius: 3px;
   padding: 1rem;
 }
 
 .highlight pre {
-  background: transparent !important;
+  background: var(--code-block-bg) !important;
 }
 
-/* -- Blockquotes ---------------------------------------------------------- */
+/* ==========================================================================
+   BLOCKQUOTES
+   ========================================================================== */
 blockquote {
-  border-left: 3px solid var(--accent);
+  border-left: 2px solid var(--accent);
   padding-left: 1.2rem;
   margin-left: 0;
   color: var(--text-secondary);
   font-style: italic;
 }
 
-/* -- Tags: subtle --------------------------------------------------------- */
+/* ==========================================================================
+   TAGS
+   ========================================================================== */
 .post-tags a {
   font-family: 'Inter', system-ui, sans-serif;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: 500;
   border: 1px solid var(--border-light);
-  border-radius: 3px;
-  padding: 0.2em 0.6em;
+  border-radius: 2px;
+  padding: 0.15em 0.5em;
   background: transparent;
+  transition: border-color 180ms ease, color 180ms ease;
 }
 
 .post-tags a:hover {
@@ -315,77 +421,30 @@ blockquote {
   color: var(--accent);
 }
 
-/* -- Footer: quieter ------------------------------------------------------ */
-.footer {
-  font-family: 'Inter', system-ui, sans-serif;
-  font-size: 0.8rem;
-  color: var(--text-secondary);
-  max-width: var(--max-width);
-  margin: 0 auto;
-}
-
-/* -- Share buttons: subtler ----------------------------------------------- */
+/* ==========================================================================
+   SHARE BUTTONS — smaller
+   ========================================================================== */
 .share-buttons svg {
-  height: 24px;
-  width: 24px;
+  height: 20px;
+  width: 20px;
+  opacity: 0.4;
+  transition: opacity 180ms ease;
 }
 
-/* -- Language switcher: discreet ------------------------------------------ */
-.lang-switch a {
-  font-family: 'Inter', system-ui, sans-serif;
-  font-size: 0.7rem;
-  font-weight: 400;
-  color: var(--text-secondary);
-  opacity: 0.6;
-  transition: opacity 200ms ease;
-}
-
-.lang-switch a:hover {
+.share-buttons a:hover svg {
   opacity: 1;
 }
 
-.lang-switch li:first-of-type {
-  opacity: 0.3;
-}
-
-.i18n_list a {
-  font-family: 'Inter', system-ui, sans-serif;
-  font-size: 0.85rem;
-}
-
-/* -- Breadcrumbs ---------------------------------------------------------- */
-.breadcrumbs {
-  font-family: 'Inter', system-ui, sans-serif;
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-}
-
-/* -- Horizontal rules ----------------------------------------------------- */
-hr {
-  border: none;
-  border-top: 1px solid var(--border-light);
-  margin: 2rem 0;
-}
-
-/* -- Social icons: smaller, less dominant --------------------------------- */
-.social-icons a svg {
-  width: 20px;
-  height: 20px;
-}
-
-/* -- Single article pages: constrain width -------------------------------- */
-.post-single {
-  max-width: var(--content-width);
-}
-
-/* -- List pages (tags, series): flat, no cards ---------------------------- */
+/* ==========================================================================
+   LIST PAGES (tags, series, posts)
+   ========================================================================== */
 .post-entry {
   border: none;
   border-bottom: 1px solid var(--border-light);
   border-radius: 0;
   background: transparent;
   margin-bottom: 0;
-  padding: 1.5rem 0;
+  padding: 1.2rem 0;
 }
 
 .post-entry:active {
@@ -393,6 +452,41 @@ hr {
 }
 
 .entry-content {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   color: var(--text-secondary);
+}
+
+.entry-header h2 {
+  font-size: 1.1rem;
+  border: none;
+  margin-top: 0;
+  padding: 0;
+}
+
+/* ==========================================================================
+   FOOTER — minimal
+   ========================================================================== */
+.footer {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  opacity: 0.5;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+/* ==========================================================================
+   MISC — hide noise
+   ========================================================================== */
+
+/* "Go to top" button — hide */
+.top-link {
+  display: none;
+}
+
+/* Horizontal rules */
+hr {
+  border: none;
+  border-top: 1px solid var(--border-light);
+  margin: 2rem 0;
 }
