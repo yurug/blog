@@ -1,7 +1,7 @@
 ---
 id: arch-overview
 domain: architecture
-last-updated: 2026-04-01
+last-updated: 2026-04-02
 related: [prd, config-and-formats, hugo-external]
 ---
 # Architecture Overview
@@ -24,7 +24,7 @@ How the pieces fit together: content, build, deploy, translate, comment.
               ▼                   ▼
 ┌─────────────────────┐  ┌──────────────────┐
 │  GitHub Actions      │  │ Claude CLI       │
-│  hugo --minify       │  │ (headless)       │
+│  hugo --minify       │  │ (print mode -p)       │
 │  deploy to Pages     │  │ translate EN→*   │
 └─────────┬───────────┘  └──────────────────┘
           ▼
@@ -62,14 +62,17 @@ blog/
 │   ├── ja/                   # Japanese
 │   └── pt/                   # Portuguese
 ├── static/
-│   ├── CNAME                 # Custom domain
-│   └── images/               # Global assets (profile photo)
-├── layouts/                  # Template overrides (giscus partial)
+│   └── CNAME                 # Custom domain
+├── layouts/
+│   └── partials/
+│       ├── comments.html          # giscus widget
+│       └── translation_list.html  # Fix for Hugo .Lang bug
 ├── themes/PaperMod/          # Git submodule
 ├── .github/workflows/
 │   └── deploy.yml            # Build + deploy
 ├── scripts/
-│   └── translate.sh          # Translation via Claude headless
+│   ├── translate.sh          # Translation via Claude CLI (-p)
+│   └── lint.sh               # Front matter validation
 └── kb/                       # Knowledge base (this)
 ```
 
@@ -87,7 +90,7 @@ blog/
 Build failures are caught in CI. Translation errors are caught locally by author review. Comment moderation is async via GitHub.
 
 ## Agent notes
-> The blog is a standard Hugo project. The only custom pieces are the Makefile (translation), the giscus integration (layout partial), and the GitHub Actions workflow.
+> The blog is a standard Hugo project. Custom pieces: Makefile (serve/build/lint/translate), two layout partials (comments.html for giscus, translation_list.html to work around Hugo 0.159 .Lang bug), two scripts (translate.sh, lint.sh), and the GitHub Actions workflow.
 
 ## Related files
 - `kb/spec/config-and-formats.md` — Hugo config details

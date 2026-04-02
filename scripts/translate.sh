@@ -34,7 +34,7 @@ Rules:
 - Output ONLY the translated markdown, nothing else. No explanations, no wrapping, no code fences.
 - Do NOT wrap the output in \`\`\`markdown or any other code block. Start directly with the --- front matter delimiter.
 
-$(cat "$src_file")" | sed '/^```markdown$/d; /^```$/d; /^[[:space:]]*$/{ 1d; }' > "$target_file"
+$(cat "$src_file")" | sed '1{ /^$/d }; 1{ /^```markdown$/d }; 1{ /^$/d }; ${ /^```$/d }' > "$target_file"
 
   echo "    -> $target_file"
 }

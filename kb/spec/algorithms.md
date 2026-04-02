@@ -1,7 +1,7 @@
 ---
 id: algorithms
 domain: spec
-last-updated: 2026-04-01
+last-updated: 2026-04-02
 related: [prd, data-model, config-and-formats]
 ---
 # Algorithms
@@ -18,12 +18,12 @@ Translation workflow, build pipeline, deployment flow.
 
 **Steps**:
 1. Scan `content/en/posts/` for all articles.
-2. For each article, check which target languages are missing (no matching `translationKey` in `content/<lang>/posts/`).
-3. For each missing translation:
+2. For each article, check which target languages need translation (missing file, or English source is newer than existing translation).
+3. For each needed translation:
    a. Read the English source markdown.
-   b. Call Claude Code headless with a prompt: translate the article to `<language>`, preserving markdown structure, front matter (translating title/summary only), and technical terms.
-   c. Write the output to `content/<lang>/posts/<slug>/index.md`.
-   d. Set `translationKey` to match the English original.
+   b. Call `claude -p` with a prompt: translate the article to `<language>`, preserving markdown structure, front matter (translating title/summary only), and technical terms.
+   c. Pipe output through `sed` to strip any wrapping code fences (Claude sometimes adds these despite instructions).
+   d. Write the output to `content/<lang>/posts/<slug>/index.md`.
 4. Author reviews diffs with `git diff`, edits as needed, commits.
 
 **State machine**:
@@ -36,8 +36,8 @@ Translation workflow, build pipeline, deployment flow.
 ```
 
 **Edge cases**:
-- Article updated after translation: `make translate` should detect if the English `lastmod` is newer than the translation's `lastmod` and offer to re-translate.
-- Author writes directly in FR: reverse translation (FR→EN) uses the same mechanism.
+- Article updated after translation: `make translate` detects if the English source file is newer (by mtime) than the translation and re-translates.
+- Author writes directly in FR: reverse translation (FR→EN) not yet implemented.
 
 ## Build pipeline
 
@@ -59,7 +59,7 @@ Translation workflow, build pipeline, deployment flow.
 6. Review, commit, push. Auto-deploys.
 
 ## Agent notes
-> The translation script is the most complex piece. Keep it simple: a Makefile target wrapping a shell script that calls `claude --headless`. No need for a full framework.
+> The translation script is the most complex piece. Keep it simple: a Makefile target wrapping a shell script that calls `claude -p`. The sed post-processing strips code fences only from the first/last lines to avoid breaking legitimate code blocks in articles.
 
 ## Related files
 - `kb/spec/data-model.md` — article schema the translator must produce

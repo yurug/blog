@@ -1,7 +1,7 @@
 ---
 id: config-and-formats
 domain: spec
-last-updated: 2026-04-01
+last-updated: 2026-04-02
 related: [data-model, algorithms, hugo-external]
 ---
 # Configuration & Formats
@@ -14,95 +14,61 @@ The `hugo.toml` config file structure and important settings.
 
 ## Hugo config (`hugo.toml`)
 
-```toml
-baseURL = "https://yann.regis-gianas.org/"
-title = "Yann Régis-Gianas"
-theme = "PaperMod"
-defaultContentLanguage = "en"
-defaultContentLanguageInSubdir = false
+The authoritative config is in `hugo.toml` at the repo root. Key aspects:
 
-# Multilingual
-[languages]
-  [languages.en]
-    languageName = "English"
-    weight = 1
-    [languages.en.params]
-      subtitle = "Software Engineering in the Agent Era"
-  [languages.fr]
-    languageName = "Français"
-    weight = 2
-    [languages.fr.params]
-      subtitle = "Génie logiciel à l'ère des agents"
-  [languages.es]
-    languageName = "Español"
-    weight = 3
-  [languages.zh]
-    languageName = "中文"
-    weight = 4
-  [languages.de]
-    languageName = "Deutsch"
-    weight = 5
-  [languages.ja]
-    languageName = "日本語"
-    weight = 6
-  [languages.pt]
-    languageName = "Português"
-    weight = 7
+### Site basics
+- `baseURL`: `https://yann.regis-gianas.org/`
+- `theme`: PaperMod (git submodule)
+- `defaultContentLanguage`: `en` (not in subdirectory)
+- `paginate`: 10
+- `enableRobotsTXT`: true
 
-# PaperMod params
-[params]
-  author = "Yann Régis-Gianas"
-  description = "Personal blog on software engineering in the agent era"
-  ShowReadingTime = true
-  ShowShareButtons = true
-  ShowPostNavLinks = true
-  ShowBreadCrumbs = true
-  ShowCodeCopyButtons = true
-  defaultTheme = "auto"  # dark/light follows system
-  [params.homeInfoParams]
-    Title = "Yann Régis-Gianas"
-    Content = "Head of Engineering at Nomadic Labs. Writing about software engineering in the agent era."
-  [[params.socialIcons]]
-    name = "github"
-    url = "https://github.com/yurug"
-  [[params.socialIcons]]
-    name = "x"
-    url = "https://x.com/YannRG"
+### Languages (7)
+EN (primary), FR, ES, ZH, DE, JA, PT. Each has a `languageName` and translated `subtitle`.
 
-# SEO
-[outputs]
-  home = ["HTML", "RSS", "JSON"]
+### PaperMod params
+- `comments = true` — enables giscus via `layouts/partials/comments.html`
+- `displayFullLangName = true` — shows full language names in translation list
+- `defaultTheme = "auto"` — dark/light follows system
+- `ShowReadingTime`, `ShowShareButtons`, `ShowPostNavLinks`, `ShowBreadCrumbs`, `ShowCodeCopyButtons` — all true
+- `homeInfoParams` — title + bio content with markdown link
+- `socialIcons` — GitHub, X, RSS
 
-# Taxonomies
-[taxonomies]
-  tag = "tags"
-  series = "series"
+### Navigation menu
+6 items: Posts, Talks, Elsewhere, About, Tags, Search (weighted in that order).
 
-# Markdown rendering
-[markup]
-  [markup.highlight]
-    style = "monokai"
-  [markup.goldmark]
-    [markup.goldmark.renderer]
-      unsafe = true  # allow raw HTML in markdown
-```
+### Outputs
+`home = ["HTML", "RSS", "JSON"]` — enables RSS feed and PaperMod search.
+
+### Taxonomies
+`tag` and `series`.
+
+### Markup
+Monokai syntax highlighting. Goldmark with `unsafe = true` (needed for embedded widgets).
 
 ## GitHub Actions deploy workflow (`.github/workflows/deploy.yml`)
 
 Key steps:
 1. Checkout repo with submodules (for theme).
-2. Setup Hugo (latest extended version).
-3. `hugo --minify`.
-4. Deploy `public/` to GitHub Pages.
+2. Install Hugo extended v0.159.2.
+3. `hugo --gc --minify` (uses baseURL from `hugo.toml`, not from Pages output).
+4. Upload artifact and deploy to GitHub Pages.
+
+Note: the workflow does NOT override `--baseURL` — this was causing broken links when it used the `configure-pages` output.
 
 ## Custom domain
 
 - File: `static/CNAME` containing `yann.regis-gianas.org`
-- DNS at OVH: CNAME record pointing to `yurug.github.io`
-- GitHub repo settings: custom domain configured.
+- DNS at OVH: CNAME record `yann` → `yurug.github.io`
+- HTTPS enforced, cert auto-renewed by GitHub.
+
+## Layout overrides
+
+- `layouts/partials/comments.html` — giscus widget (conditionally rendered)
+- `layouts/partials/translation_list.html` — workaround for Hugo 0.159 bug where `.Lang` on `.Translations` items returns the current page's language. Extracts language code from `RelPermalink` and maps to display names via a `dict`.
 
 ## Agent notes
-> The config above is a starting point. PaperMod has many more params — only add what's needed. The `unsafe = true` in goldmark is needed for embedded widgets like giscus.
+> Always read the actual `hugo.toml` for the full config — this KB file describes the structure and rationale, not the exact values. The translation_list.html override is a workaround that should be removed when Hugo fixes the `.Lang` bug.
 
 ## Related files
 - `kb/spec/data-model.md` — front matter fields this config enables
