@@ -33,17 +33,32 @@
 
                 {{- if (not site.Params.disableLangToggle) }}
                     {{- $lang := .Lang }}
+                    {{- $page := . }}
                     {{- $langMap := dict "en" "English" "fr" "Français" "es" "Español" "zh" "中文" "de" "Deutsch" "ja" "日本語" "pt" "Português" }}
-                    {{- with site.Home.Translations }}
+                    {{/* Build a map of lang -> URL, preferring page translations over homepage */}}
+                    {{- $pageTrans := dict }}
+                    {{- range $page.Translations }}
+                        {{- $lc := .RelPermalink }}
+                        {{- $lc = index (split (strings.TrimPrefix "/" $lc) "/") 0 }}
+                        {{- $pageTrans = merge $pageTrans (dict $lc .Permalink) }}
+                    {{- end }}
+                    {{- $homeTrans := dict }}
+                    {{- range site.Home.Translations }}
+                        {{- $lc := .RelPermalink }}
+                        {{- $lc = index (split (strings.TrimPrefix "/" $lc) "/") 0 }}
+                        {{- $homeTrans = merge $homeTrans (dict $lc .Permalink) }}
+                    {{- end }}
+                    {{- $allLangs := merge $homeTrans $pageTrans }}
+                    {{- if $allLangs }}
                     <div class="lang-dropdown">
                         <button class="lang-toggle" aria-label="Language">
                             {{ index $langMap $lang | default ($lang | upper) }}
                             <svg width="8" height="5" viewBox="0 0 8 5"><path d="M0 0l4 5 4-5z" fill="currentColor"/></svg>
                         </button>
                         <div class="lang-menu">
-                            {{- range . -}}
-                            {{- if ne $lang .Lang }}
-                            <a href="{{ .Permalink }}">{{ index $langMap .Lang | default (.Lang | upper) }}</a>
+                            {{- range $lc, $url := $allLangs -}}
+                            {{- if ne $lc $lang }}
+                            <a href="{{ $url }}">{{ index $langMap $lc | default ($lc | upper) }}</a>
                             {{- end -}}
                             {{- end }}
                         </div>
