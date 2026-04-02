@@ -54,6 +54,7 @@ enableRobotsTXT = true
   ShowCodeCopyButtons = true
   defaultTheme = "auto"
   comments = true
+  displayFullLangName = true
 
   [params.homeInfoParams]
     Title = "Yann Régis-Gianas"
