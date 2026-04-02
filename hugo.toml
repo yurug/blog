@@ -95,11 +95,6 @@ enableRobotsTXT = true
     url = "/en/talks/"
     weight = 20
   [[menu.main]]
-    identifier = "elsewhere"
-    name = "Elsewhere"
-    url = "/en/elsewhere/"
-    weight = 30
-  [[menu.main]]
     identifier = "about"
     name = "About"
     url = "/en/about/"
