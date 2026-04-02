@@ -147,6 +147,30 @@ h3 {
   height: 18px;
 }
 
+/* -- Sidebar navigation --------------------------------------------------- */
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-top: 1.2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-light);
+}
+
+.sidebar-nav a {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-decoration: none;
+  background: none !important;
+  transition: color 200ms ease;
+}
+
+.sidebar-nav a:hover {
+  color: var(--text-body);
+}
+
 .home-section-title {
   font-family: 'Inter', system-ui, sans-serif;
   font-size: 1rem;
@@ -236,7 +260,7 @@ h3 {
   color: var(--text-secondary);
 }
 
-/* -- Header: minimal ------------------------------------------------------ */
+/* -- Header: minimal, no menu --------------------------------------------- */
 .header {
   max-width: var(--max-width);
   margin: 0 auto;
@@ -246,10 +270,8 @@ h3 {
   max-width: var(--max-width);
 }
 
-#menu a {
-  font-family: 'Inter', system-ui, sans-serif;
-  font-size: 0.9rem;
-  font-weight: 500;
+#menu {
+  display: none;
 }
 
 /* -- Code blocks ---------------------------------------------------------- */

@@ -11,6 +11,11 @@
       I study the dynamics of programs and programming — how programs compute and evolve.
     </p>
     {{- partial "social_icons.html" (dict) }}
+    <nav class="sidebar-nav">
+      {{- range site.Menus.main }}
+      <a href="{{ .URL | absURL }}">{{ .Name }}</a>
+      {{- end }}
+    </nav>
   </aside>
 
   <section class="home-content">
