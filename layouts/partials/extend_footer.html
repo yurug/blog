@@ -1,0 +1,11 @@
+<script>
+document.addEventListener('click', function(e) {
+  var dd = document.querySelector('.lang-dropdown');
+  if (!dd) return;
+  if (e.target.closest('.lang-toggle')) {
+    dd.classList.toggle('open');
+  } else {
+    dd.classList.remove('open');
+  }
+});
+</script>

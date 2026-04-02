@@ -35,14 +35,19 @@
                     {{- $lang := .Lang }}
                     {{- $langMap := dict "en" "English" "fr" "Français" "es" "Español" "zh" "中文" "de" "Deutsch" "ja" "日本語" "pt" "Português" }}
                     {{- with site.Home.Translations }}
-                    <select class="lang-select" onchange="if(this.value)window.location.href=this.value" aria-label="Language">
-                        <option value="" selected>{{ index $langMap $lang | default ($lang | upper) }}</option>
-                        {{- range . -}}
-                        {{- if ne $lang .Lang }}
-                        <option value="{{ .Permalink }}">{{ index $langMap .Lang | default (.Lang | upper) }}</option>
-                        {{- end -}}
-                        {{- end }}
-                    </select>
+                    <div class="lang-dropdown">
+                        <button class="lang-toggle" aria-label="Language">
+                            {{ index $langMap $lang | default ($lang | upper) }}
+                            <svg width="8" height="5" viewBox="0 0 8 5"><path d="M0 0l4 5 4-5z" fill="currentColor"/></svg>
+                        </button>
+                        <div class="lang-menu">
+                            {{- range . -}}
+                            {{- if ne $lang .Lang }}
+                            <a href="{{ .Permalink }}">{{ index $langMap .Lang | default (.Lang | upper) }}</a>
+                            {{- end -}}
+                            {{- end }}
+                        </div>
+                    </div>
                     {{- end }}
                 {{- end }}
             </div>
