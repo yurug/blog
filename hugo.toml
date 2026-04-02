@@ -87,22 +87,22 @@ enableRobotsTXT = true
   [[menu.main]]
     identifier = "posts"
     name = "Posts"
-    url = "/posts/"
+    url = "/en/posts/"
     weight = 10
   [[menu.main]]
     identifier = "talks"
     name = "Talks"
-    url = "/talks/"
+    url = "/en/talks/"
     weight = 20
   [[menu.main]]
     identifier = "elsewhere"
     name = "Elsewhere"
-    url = "/elsewhere/"
+    url = "/en/elsewhere/"
     weight = 30
   [[menu.main]]
     identifier = "about"
     name = "About"
-    url = "/about/"
+    url = "/en/about/"
     weight = 40
   [[menu.main]]
     identifier = "tags"
@@ -112,5 +112,5 @@ enableRobotsTXT = true
   [[menu.main]]
     identifier = "search"
     name = "Search"
-    url = "/search/"
+    url = "/en/search/"
     weight = 60
