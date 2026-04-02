@@ -21,6 +21,5 @@ Smart Contracts, Programming, Teaching Software Development, Proof Mechanization
 
 ### Contact
 
-- Email: yann@regis-gianas.org
 - GitHub: [@yurug](https://github.com/yurug)
 - X: [@yurug](https://x.com/yurug)
