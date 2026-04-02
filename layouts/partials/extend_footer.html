@@ -2,6 +2,7 @@
 document.addEventListener('click', function(e) {
   var dd = document.querySelector('.lang-dropdown');
   if (!dd) return;
+  if (e.target.closest('.lang-menu a')) return; /* let links navigate */
   if (e.target.closest('.lang-toggle')) {
     dd.classList.toggle('open');
   } else {
