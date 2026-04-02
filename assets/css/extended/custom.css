@@ -308,8 +308,24 @@ blockquote {
   width: 24px;
 }
 
-/* -- Language switcher ---------------------------------------------------- */
-.lang-switch a,
+/* -- Language switcher: discreet ------------------------------------------ */
+.lang-switch a {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.7rem;
+  font-weight: 400;
+  color: var(--text-secondary);
+  opacity: 0.6;
+  transition: opacity 200ms ease;
+}
+
+.lang-switch a:hover {
+  opacity: 1;
+}
+
+.lang-switch li:first-of-type {
+  opacity: 0.3;
+}
+
 .i18n_list a {
   font-family: 'Inter', system-ui, sans-serif;
   font-size: 0.85rem;
