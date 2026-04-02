@@ -54,6 +54,7 @@ enableRobotsTXT = true
   ShowCodeCopyButtons = true
   defaultTheme = "auto"
   comments = true
+  mainSections = ["posts"]
   displayFullLangName = true
 
   [[params.socialIcons]]

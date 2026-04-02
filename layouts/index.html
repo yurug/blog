@@ -15,8 +15,21 @@
 
   <section class="home-content">
     <h2 class="home-section-title">Recent posts</h2>
-    {{- $pages := where site.RegularPages "Type" "in" site.Params.mainSections }}
-    {{- $pages = where $pages "Params.hiddenInHomeList" "!=" "true" }}
+    {{- $langPrefix := printf "/%s/posts/" $.Lang }}
+    {{- $defaultPrefix := "/en/posts/" }}
+    {{- $pages := slice }}
+    {{- range site.AllPages }}
+      {{- if and (eq .Kind "page") (in .RelPermalink $langPrefix) (ne (.Param "hiddenInHomeList") true) }}
+        {{- $pages = $pages | append . }}
+      {{- end }}
+    {{- end }}
+    {{- if and (eq $.Lang "en") (eq (len $pages) 0) }}
+      {{- range site.AllPages }}
+        {{- if and (eq .Kind "page") (in .RelPermalink $defaultPrefix) (ne (.Param "hiddenInHomeList") true) }}
+          {{- $pages = $pages | append . }}
+        {{- end }}
+      {{- end }}
+    {{- end }}
     {{- range $pages }}
     <article class="post-entry">
       <header class="entry-header">
