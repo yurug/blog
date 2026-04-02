@@ -203,8 +203,9 @@ h3 {
   display: block;
   font-family: 'IBM Plex Sans', system-ui, sans-serif;
   font-size: 0.75rem;
+  line-height: 1.2;
   color: var(--text-secondary);
-  padding: 0.3rem 0.8rem;
+  padding: 0.15rem 0.6rem;
   text-decoration: none;
   transition: color 180ms ease;
 }
