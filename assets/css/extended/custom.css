@@ -161,9 +161,16 @@ h3 {
 }
 
 .home-content .post-entry {
+  border: none;
   border-bottom: 1px solid var(--border-light);
+  border-radius: 0;
+  background: transparent;
   padding: 1.2rem 0;
   margin: 0;
+}
+
+.home-content .post-entry:active {
+  transform: none;
 }
 
 .home-content .entry-header h3 {
@@ -333,11 +340,18 @@ hr {
   max-width: var(--content-width);
 }
 
-/* -- List pages (tags, series): constrain --------------------------------- */
+/* -- List pages (tags, series): flat, no cards ---------------------------- */
 .post-entry {
+  border: none;
   border-bottom: 1px solid var(--border-light);
+  border-radius: 0;
+  background: transparent;
   margin-bottom: 0;
   padding: 1.5rem 0;
+}
+
+.post-entry:active {
+  transform: none;
 }
 
 .entry-content {
