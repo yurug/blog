@@ -112,11 +112,19 @@ h3 {
 .header {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 1.5rem 1.5rem 0;
+  padding: 1.5rem 0 0;
 }
 
 .nav {
   max-width: var(--max-width);
+  gap: 0;
+}
+
+.logo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 
 .logo a {
@@ -124,6 +132,13 @@ h3 {
   font-size: 1rem;
   font-weight: 600;
   letter-spacing: -0.01em;
+}
+
+.logo-switches {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
 }
 
 #menu {
