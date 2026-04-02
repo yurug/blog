@@ -56,11 +56,6 @@ enableRobotsTXT = true
   comments = true
   displayFullLangName = true
 
-  [params.homeInfoParams]
-    Title = "Yann Régis-Gianas"
-    Content = """Head of Engineering at [Nomadic Labs](https://www.nomadic-labs.com/). \
-Writing about software engineering in the agent era."""
-
   [[params.socialIcons]]
     name = "github"
     url = "https://github.com/yurug"

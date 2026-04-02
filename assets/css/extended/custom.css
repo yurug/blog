@@ -14,7 +14,8 @@
   --text-body: #1a1a1a;
   --text-secondary: #666;
   --bg: #fafafa;
-  --max-width: 42rem;
+  --max-width: 58rem;
+  --content-width: 38rem;
   --line-height: 1.8;
 }
 
@@ -64,7 +65,8 @@ h3 {
 
 /* -- Links: animated underline fill --------------------------------------- */
 .post-content a,
-.post-entry a {
+.home-sidebar a,
+.home-content a {
   color: inherit;
   font-weight: 500;
   text-decoration: none;
@@ -76,43 +78,154 @@ h3 {
 }
 
 .post-content a:hover,
-.post-entry a:hover {
+.home-sidebar a:hover,
+.home-content a:hover {
   background-size: 100% 100%;
 }
 
-/* -- Narrower content area ------------------------------------------------ */
+/* -- Wider main for two-column homepage ----------------------------------- */
 .main {
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 0 1.5rem;
 }
 
+/* -- Article pages: narrower ---------------------------------------------- */
 .post-content {
   font-size: 1.05rem;
   text-align: justify;
   hyphens: auto;
+  max-width: var(--content-width);
+}
+
+/* -- Homepage: two-column layout ------------------------------------------ */
+.home-layout {
+  display: grid;
+  grid-template-columns: 16rem 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.home-sidebar {
+  position: sticky;
+  top: 5rem;
+  padding-top: 0.5rem;
+}
+
+.profile-photo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 2px solid var(--border-light);
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.profile-name {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem;
+  padding: 0;
+  border: none;
+  letter-spacing: -0.02em;
+}
+
+.profile-bio {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0 0 0.8rem;
+}
+
+.home-sidebar .social-icons {
+  margin-top: 0.5rem;
+}
+
+.home-sidebar .social-icons a svg {
+  width: 18px;
+  height: 18px;
+}
+
+.home-section-title {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border-light);
+  padding-bottom: 0.5rem;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.home-content .post-entry {
+  border-bottom: 1px solid var(--border-light);
+  padding: 1.2rem 0;
+  margin: 0;
+}
+
+.home-content .entry-header h3 {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 0.3rem;
+  line-height: 1.4;
+}
+
+.home-content .entry-header h3 a {
+  background-size: 100% 0;
+}
+
+.home-content .entry-header h3 a:hover {
+  background-size: 100% 100%;
+}
+
+.home-content .entry-content {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.home-content .entry-content p {
+  margin: 0;
+}
+
+.home-content .entry-footer {
+  margin-top: 0.3rem;
+}
+
+/* Mobile: stack sidebar on top */
+@media (max-width: 768px) {
+  .home-layout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .home-sidebar {
+    position: static;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .profile-photo {
+    width: 80px;
+    height: 80px;
+  }
+
+  .profile-name,
+  .profile-bio {
+    flex-basis: calc(100% - 96px);
+  }
 }
 
 /* -- Post metadata: lighter, smaller -------------------------------------- */
 .post-meta {
   font-family: 'Inter', system-ui, sans-serif;
   font-size: 0.85rem;
-  color: var(--text-secondary);
-}
-
-/* -- Article list: cleaner ------------------------------------------------ */
-.post-entry {
-  border-bottom: 1px solid var(--border-light);
-  margin-bottom: 0;
-  padding: 1.5rem 0;
-}
-
-.post-entry:first-of-type {
-  border-top: 1px solid var(--border-light);
-}
-
-.entry-content {
-  font-size: 0.95rem;
   color: var(--text-secondary);
 }
 
@@ -130,18 +243,6 @@ h3 {
   font-family: 'Inter', system-ui, sans-serif;
   font-size: 0.9rem;
   font-weight: 500;
-}
-
-/* -- Home info: with profile photo ---------------------------------------- */
-.first-entry {
-  border: none;
-  min-height: auto;
-}
-
-.home-info .entry-content {
-  font-size: 1.05rem;
-  color: var(--text-body);
-  line-height: var(--line-height);
 }
 
 /* -- Code blocks ---------------------------------------------------------- */
@@ -227,20 +328,19 @@ hr {
   height: 20px;
 }
 
-/* -- Profile photo on homepage -------------------------------------------- */
-.home-info .entry-header {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+/* -- Single article pages: constrain width -------------------------------- */
+.post-single {
+  max-width: var(--content-width);
 }
 
-.home-info .entry-header::before {
-  content: '';
-  display: block;
-  width: 80px;
-  height: 80px;
-  min-width: 80px;
-  border-radius: 50%;
-  background: url('/images/profile.jpg') center/cover;
-  border: 2px solid var(--border-light);
+/* -- List pages (tags, series): constrain --------------------------------- */
+.post-entry {
+  border-bottom: 1px solid var(--border-light);
+  margin-bottom: 0;
+  padding: 1.5rem 0;
+}
+
+.entry-content {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
 }
