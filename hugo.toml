@@ -88,7 +88,7 @@ enableRobotsTXT = true
 
   [[params.socialIcons]]
     name = "rss"
-    url = "/index.xml"
+    url = "/en/posts/index.xml"
 
 [outputs]
   home = ["HTML", "RSS", "JSON"]

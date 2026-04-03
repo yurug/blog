@@ -82,17 +82,12 @@
                 {{- end }}
             </div>
         </div>
-        {{- $currentPage := . }}
+        {{/* Menu hidden via CSS — kept for accessibility/SEO */}}
         <ul id="menu">
             {{- range site.Menus.main }}
-            {{- $menu_item_url := (cond (strings.HasSuffix .URL "/") .URL (printf "%s/" .URL) ) | absLangURL }}
-            {{- $page_url:= $currentPage.Permalink | absLangURL }}
-            {{- $is_search := eq (site.GetPage .KeyName).Layout `search` }}
             <li>
                 <a href="{{ .URL | absLangURL }}" title="{{ .Title | default .Name }}">
-                    <span {{- if eq $menu_item_url $page_url }} class="active" {{- end }}>
-                        {{- .Name -}}
-                    </span>
+                    <span>{{ .Name }}</span>
                 </a>
             </li>
             {{- end }}
