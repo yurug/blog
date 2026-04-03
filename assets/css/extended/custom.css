@@ -64,8 +64,9 @@ article {
   -moz-osx-font-smoothing: grayscale;
 }
 
-body {
-  background: var(--theme);
+body,
+.list {
+  background: var(--theme) !important;
 }
 
 /* -- Headings ------------------------------------------------------------- */
