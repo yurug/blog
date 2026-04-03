@@ -13,36 +13,57 @@ enableRobotsTXT = true
     weight = 1
     [languages.en.params]
       subtitle = "Software Engineering in the Agent Era"
+      bio1 = 'Head of Engineering at <a href="https://www.nomadic-labs.com/">Nomadic Labs</a>. Writing about software engineering in the agent era.'
+      bio2 = "I study the dynamics of programs and programming — how programs compute and evolve."
+      recentPosts = "Recent posts"
   [languages.fr]
     languageName = "Français"
     weight = 2
     [languages.fr.params]
       subtitle = "Génie logiciel à l'ère des agents"
+      bio1 = "Directeur de l'ingénierie chez <a href=\"https://www.nomadic-labs.com/\">Nomadic Labs</a>. J'écris sur le génie logiciel à l'ère des agents."
+      bio2 = "J'étudie la dynamique des programmes et de la programmation — comment les programmes calculent et évoluent."
+      recentPosts = "Articles récents"
   [languages.es]
     languageName = "Español"
     weight = 3
     [languages.es.params]
       subtitle = "Ingeniería de software en la era de los agentes"
+      bio1 = 'Director de ingeniería en <a href="https://www.nomadic-labs.com/">Nomadic Labs</a>. Escribo sobre ingeniería de software en la era de los agentes.'
+      bio2 = "Estudio la dinámica de los programas y la programación — cómo los programas calculan y evolucionan."
+      recentPosts = "Artículos recientes"
   [languages.zh]
     languageName = "中文"
     weight = 4
     [languages.zh.params]
       subtitle = "智能体时代的软件工程"
+      bio1 = '<a href="https://www.nomadic-labs.com/">Nomadic Labs</a> 工程总监。撰写关于智能体时代软件工程的文章。'
+      bio2 = "我研究程序和编程的动态——程序如何计算和演化。"
+      recentPosts = "最新文章"
   [languages.de]
     languageName = "Deutsch"
     weight = 5
     [languages.de.params]
       subtitle = "Softwareentwicklung im Zeitalter der Agenten"
+      bio1 = 'Leiter der Technik bei <a href="https://www.nomadic-labs.com/">Nomadic Labs</a>. Ich schreibe über Softwareentwicklung im Zeitalter der Agenten.'
+      bio2 = "Ich erforsche die Dynamik von Programmen und Programmierung — wie Programme berechnen und sich entwickeln."
+      recentPosts = "Neueste Beiträge"
   [languages.ja]
     languageName = "日本語"
     weight = 6
     [languages.ja.params]
       subtitle = "エージェント時代のソフトウェアエンジニアリング"
+      bio1 = '<a href="https://www.nomadic-labs.com/">Nomadic Labs</a> エンジニアリング責任者。エージェント時代のソフトウェアエンジニアリングについて執筆。'
+      bio2 = "プログラムとプログラミングのダイナミクスを研究しています——プログラムがどのように計算し、進化するか。"
+      recentPosts = "最新の記事"
   [languages.pt]
     languageName = "Português"
     weight = 7
     [languages.pt.params]
       subtitle = "Engenharia de software na era dos agentes"
+      bio1 = 'Diretor de engenharia na <a href="https://www.nomadic-labs.com/">Nomadic Labs</a>. Escrevo sobre engenharia de software na era dos agentes.'
+      bio2 = "Estudo a dinâmica dos programas e da programação — como os programas calculam e evoluem."
+      recentPosts = "Artigos recentes"
 
 [params]
   author = "Yann Régis-Gianas"

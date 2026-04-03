@@ -3,13 +3,8 @@
 <div class="home-layout">
   <aside class="home-sidebar">
     <img class="profile-photo" src="/images/profile.jpg" alt="Yann Régis-Gianas" />
-    <p class="profile-bio">
-      Head of Engineering at <a href="https://www.nomadic-labs.com/">Nomadic Labs</a>.
-      Writing about software engineering in the agent era.
-    </p>
-    <p class="profile-bio">
-      I study the dynamics of programs and programming — how programs compute and evolve.
-    </p>
+    <p class="profile-bio">{{ site.Params.bio1 | safeHTML }}</p>
+    <p class="profile-bio">{{ site.Params.bio2 }}</p>
     {{- partial "social_icons.html" (dict) }}
     <nav class="sidebar-nav">
       {{- range site.Menus.main }}
@@ -19,7 +14,7 @@
   </aside>
 
   <section class="home-content">
-    <h2 class="home-section-title">Recent posts</h2>
+    <h2 class="home-section-title">{{ site.Params.recentPosts | default "Recent posts" }}</h2>
     {{- $langPrefix := printf "/%s/posts/" $.Lang }}
     {{- $defaultPrefix := "/en/posts/" }}
     {{- $pages := slice }}
