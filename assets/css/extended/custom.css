@@ -50,13 +50,22 @@
 }
 
 /* -- Base typography ------------------------------------------------------ */
-body {
-  font-family: 'IBM Plex Sans', system-ui, sans-serif;
+body,
+.post-content,
+.post-single,
+.post-entry,
+.entry-content,
+.page-header,
+article {
+  font-family: 'IBM Plex Sans', system-ui, sans-serif !important;
   line-height: var(--line-height);
   color: var(--text-body);
-  background: var(--theme);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: var(--theme);
 }
 
 /* -- Headings ------------------------------------------------------------- */
