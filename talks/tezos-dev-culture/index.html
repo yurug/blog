@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spec-Driven Agentic Development — Tezos Dev Culture</title>
+
+  <!-- Reveal.js from CDN -->
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@5.1.0/dist/theme/black.css">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --r-background-color: #000;
+      --r-main-font: 'Inter', sans-serif;
+      --r-main-font-size: 54px;
+      --r-main-color: #fff;
+      --r-heading-font: 'Inter', sans-serif;
+      --r-heading-color: #fff;
+      --r-heading-text-shadow: 0 2px 20px rgba(0,0,0,0.8);
+      --r-link-color: #ccc;
+      --r-link-color-hover: #fff;
+      --r-selection-background-color: rgba(255,255,255,0.2);
+      --r-controls-color: rgba(255,255,255,0.4);
+    }
+
+    .reveal {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      color: #fff;
+    }
+
+    /* Dark scrim overlay — covers the full slide background.
+       Uses absolute positioning with massive overflow to guarantee
+       full coverage regardless of reveal.js scaling or aspect ratio.
+       position:fixed breaks inside CSS-transformed parents (reveal.js
+       uses transform:scale), so we use absolute with huge dimensions. */
+    .reveal .slides section[data-background-image]::before {
+      content: '';
+      position: absolute;
+      top: -200%;
+      left: -200%;
+      width: 500%;
+      height: 500%;
+      background: rgba(0, 0, 0, 0.65);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Heavy scrim for text-critical slides */
+    .reveal .slides section.scrim-heavy::before {
+      background: rgba(0, 0, 0, 0.80);
+    }
+
+    /* Moderate scrim */
+    .reveal .slides section.scrim-moderate::before {
+      background: rgba(0, 0, 0, 0.50);
+    }
+
+    /* No scrim */
+    .reveal .slides section.no-scrim::before {
+      display: none;
+    }
+    .reveal .slides section.no-scrim {
+      justify-content: flex-start !important;
+      padding-top: 0.3em !important;
+    }
+
+    /* Ensure slide content sits above the scrim */
+    .reveal .slides section[data-background-image] > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Global text shadow for readability */
+    .reveal .slides section * {
+      text-shadow: 0 2px 20px rgba(0, 0, 0, 0.8);
+    }
+
+    /* Controls and progress bar styling */
+    .reveal .controls {
+      color: rgba(255, 255, 255, 0.35);
+    }
+    .reveal .progress {
+      color: rgba(255, 255, 255, 0.25);
+      height: 3px;
+    }
+
+    /* ---- Slide-specific styles ---- */
+
+    /* Quote style — large italic serif */
+    .quote-main {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.8em;
+      line-height: 1.3;
+      font-weight: 400;
+      max-width: 85%;
+      margin: 0 auto;
+    }
+
+    /* Smaller subtitle text */
+    .subtitle {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.1em;
+      font-weight: 300;
+      opacity: 0.85;
+      margin-top: 0.8em;
+    }
+
+    /* Small top title */
+    .top-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.5em;
+      font-weight: 300;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      opacity: 0.6;
+      margin-bottom: 1.5em;
+    }
+
+    /* Main bold statement */
+    .statement {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.8em;
+      font-weight: 900;
+      line-height: 1.2;
+    }
+
+    /* Flow/pipeline text */
+    .flow {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.5em;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+    }
+
+    /* Enormous text for "Five hours." */
+    .enormous {
+      font-family: 'Inter', sans-serif;
+      font-size: 5.5em;
+      font-weight: 900;
+      line-height: 1.0;
+    }
+
+    /* Small italic note */
+    .note {
+      font-family: 'Inter', sans-serif;
+      font-style: italic;
+      font-size: 0.85em;
+      font-weight: 300;
+      opacity: 0.7;
+      margin-top: 1.2em;
+    }
+
+    /* French quote — extra special treatment */
+    .french-quote {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 2.2em;
+      line-height: 1.3;
+      font-weight: 700;
+      max-width: 80%;
+      margin: 0 auto;
+    }
+
+    /* Spec/Arch/Feedback tags */
+    .tags {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8em;
+      font-weight: 300;
+      letter-spacing: 0.2em;
+      opacity: 0.7;
+      margin-top: 0.6em;
+    }
+
+    /* Climax "Your culture IS the harness" */
+    .climax {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.5em;
+      font-weight: 900;
+      margin-top: 0.8em;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Vertically center slide content */
+    .reveal .slides section {
+      display: flex !important;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2em;
+      box-sizing: border-box;
+    }
+
+    /* Remove default reveal.js heading margins */
+    .reveal h1, .reveal h2, .reveal h3 {
+      margin: 0 0 0.3em 0;
+    }
+
+    /* Technical diagrams */
+    .reveal .diagram {
+      width: 85%;
+      max-width: 1500px;
+      height: auto;
+      margin-top: 1em;
+      filter: drop-shadow(0 0 10px rgba(0,0,0,0.3));
+    }
+  </style>
+</head>
+<body>
+
+<div class="reveal">
+  <div class="slides">
+
+    <!-- Title Slide -->
+    <section class="scrim-heavy"
+             data-background-image="images/slide1-bike.png"
+             data-background-size="cover"
+             data-background-position="center"
+             data-transition="fade">
+      <div style="margin-bottom:1.5em;">
+        <p style="font-family:'Playfair Display',serif; font-size:2.4em; font-weight:700; letter-spacing:0.02em; margin:0; line-height:1.1;">Stop Pedaling</p>
+        <p style="font-family:'Inter',sans-serif; font-size:0.7em; font-weight:300; opacity:0.7; margin-top:0.6em; letter-spacing:0.1em; text-transform:uppercase;">First Principles for Spec-Driven Agentic Development</p>
+      </div>
+      <div style="margin-top:2.5em;">
+        <p style="font-family:'Inter',sans-serif; font-size:0.6em; font-weight:400; margin:0;">Yann R&eacute;gis-Gianas</p>
+        <p style="font-family:'Inter',sans-serif; font-size:0.45em; font-weight:300; opacity:0.5; margin-top:0.3em;">Head of Engineering, Nomadic Labs &nbsp;&middot;&nbsp; @yurug</p>
+      </div>
+    </section>
+
+    <!-- Slide 1 — Opening Provocation -->
+    <section class="no-scrim" data-background-image="images/slide1-bike.png"
+             data-background-size="cover"
+             data-background-position="center"
+             data-transition="fade">
+      <div style="margin-top:-48vh;">
+        <p class="quote-main">"Most teams using AI agents are putting a motor on a bicycle."</p>
+      </div>
+    </section>
+
+    <!-- Slide 2 — The Assembly Line -->
+    <section data-background-image="images/slide2-neutral.png"
+             data-background-size="cover"
+             data-background-position="center"
+             data-transition="fade">
+      <p class="top-title">The new reality</p>
+      <p class="flow">IDEAS &rarr; [agents] &rarr; SOFTWARE</p>
+      <p class="subtitle">What are you feeding in? What's coming out?</p>
+    </section>
+
+    <!-- Slide 3 — Speed Is Not Enough -->
+    <section data-background-image="images/slide3-chaos.png"
+             data-background-size="cover"
+             data-background-position="center"
+             data-transition="fade">
+      <p class="french-quote">"Ne pas confondre<br>vitesse et pr&eacute;cipitation."</p>
+      <p class="subtitle">Garbage in, garbage out &mdash; at full speed.</p>
+    </section>
+
+    <!-- Slide 4 — The Harness -->
+    <section data-background-image="images/slide4-harnessed.png"
+             data-background-size="cover"
+             data-background-position="center"
+             data-transition="fade">
+      <p class="statement">Fix the harness, not the output.</p>
+      <p class="tags">Knowledge &amp; Spec &middot; Architecture &middot; Feedback loop</p>
+    </section>
+
+    <!-- Slide 5 — The Michelson Story -->
+    <section class="scrim-moderate"
+             data-background-image="images/slide5-michelson.png"
+             data-background-size="cover"
+             data-background-position="center"
+             data-transition="fade">
+      <div style="margin-top:10vh;">
+        <p class="enormous">Five hours.</p>
+        <p class="subtitle">From zero to a working AI-assisted verifier for Michelson.</p>
+      </div>
+    </section>
+
+    <!-- Slide 5b — Michelson Verifier Pipeline diagram -->
+    <section data-background-color="#111118"
+             data-transition="fade">
+      <p class="top-title">Michelson Verifier Pipeline</p>
+      <img src="images/diagram-michelson.svg" class="diagram" style="width:100%; max-width:1920px;"
+           alt="Michelson Verifier Pipeline">
+    </section>
+
+    <!-- Slide 6 — Formal Methods Are Back -->
+    <section class="scrim-heavy"
+             data-background-image="images/slide6-formal.png"
+             data-background-size="cover"
+             data-background-position="center"
+             data-transition="fade">
+      <p class="statement">The cost barrier just fell.</p>
+      <p class="subtitle">AI reduced the cost. The rigor stayed exactly the same.</p>
+    </section>
+
+    <!-- Slide 6b — Zaynah's verification flow diagram -->
+    <section data-background-color="#111118"
+             data-transition="fade">
+      <p class="top-title">Formal verification with Claude</p>
+      <img src="images/diagram-zaynah.svg" class="diagram" style="width:100%; max-width:1920px;"
+           alt="Zaynah Formal Verification Flow">
+    </section>
+
+    <!-- Slide 7 — Your Culture IS the Harness (heavy scrim: climax text must dominate) -->
+    <section class="scrim-heavy"
+             data-background-image="images/slide7-tezos.png"
+             data-background-size="cover"
+             data-background-position="center"
+             data-transition="fade">
+      <p class="quote-main" style="font-size:1.5em; max-width:95%;">"The tools we built for <span style="color:#88FFAA">correctness</span><br>are the same tools agents need for <span style="color:#88FFAA">quality</span>."</p>
+      <p class="climax">Our culture IS the harness.</p>
+    </section>
+
+    <!-- Slide 8 — Close -->
+    <section class="scrim-heavy" data-background-image="images/slide8-walkway.png"
+             data-background-size="cover"
+             data-background-position="center"
+             data-transition="fade">
+      <p class="statement">Our factory is already built.</p>
+      <p class="subtitle">Are you running the line &mdash; or still assembling by hand?</p>
+
+    </section>
+
+  </div>
+</div>
+
+<!-- Reveal.js from CDN -->
+<script src="https://unpkg.com/reveal.js@5.1.0/dist/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    width: 1920,
+    height: 1080,
+    margin: 0,
+    minScale: 0.2,
+    maxScale: 2.0,
+
+    hash: true,
+    history: true,
+    controls: true,
+    progress: true,
+    center: true,
+    transition: 'fade',
+    transitionSpeed: 'slow',
+    backgroundTransition: 'fade',
+
+    // No slide numbers — TED style
+    slideNumber: false,
+  });
+</script>
+
+</body>
+</html>
