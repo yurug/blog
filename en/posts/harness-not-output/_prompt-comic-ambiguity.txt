@@ -1,0 +1,32 @@
+A three-panel black-ink comic strip on white, in a loose hand-drawn
+whiteboard-sketch style: thin confident pen lines, no colour, no shading, no
+grey fill, no cross-hatching. Three panels of equal size separated by simple
+vertical borders.
+
+CHARACTER PINNING, identical in all three panels and non-negotiable: the
+human is a stick figure with a plain round bare head, two dots for eyes and a
+simple mouth, a single straight line for the torso, single straight lines for
+arms and legs, and no clothing at all: no shirt, no collar, no hat, no shoes,
+no buttons, no body shading. The robot is a small boxy figure with a
+rectangular body, a rectangular head, two short straight antennae, round
+eyes, and the lowercase word "agent" written on its chest. Both keep exactly
+the same proportions and features in every panel.
+
+PANEL 1. The human hands the robot a single sheet of paper. Written on the
+sheet, large and clearly legible, in lowercase: "make it fast". The robot
+takes it with one hand. Both look neutral and businesslike.
+
+PANEL 2. The robot works, with small motion lines around it. On the desk in
+front of it lies a sheet showing a list of three rows, and every row has been
+struck through with a single decisive line. Beside that sheet, a wastebasket
+with pages in it.
+
+PANEL 3. The robot proudly holds up a large stopwatch whose face reads
+"0 ms", its round eyes cheerful. The human stands facing it with its mouth
+open, arms hanging down, one small question mark floating above its head.
+
+There is no speech bubble anywhere and no dialogue. The only text in the
+entire image is: "agent" on the robot's chest, "make it fast" on the sheet in
+panel one, and "0 ms" on the stopwatch face in panel three. No title, no
+caption, no panel numbers, no signature, no other words of any kind, inside
+or outside the panels.

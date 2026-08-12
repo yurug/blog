@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://yann.regis-gianas.org/sitemap.xml

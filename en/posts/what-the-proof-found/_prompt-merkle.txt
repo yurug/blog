@@ -1,0 +1,52 @@
+A hand-drawn explanatory diagram, black marker on a plain white background, in
+the style of a careful engineer's whiteboard sketch: rounded rectangles with
+clean black outlines, hand-lettered uppercase labels, curved arrows with solid
+arrowheads, secondary labels in grey. No colour except one flat pale warm
+yellow (roughly #FDE9A8) used only where stated. No shading, no gradients, no
+shadows, no 3D, no photographic texture, no frame around the image.
+
+The image is ONE figure split into two panels side by side, separated by a thin
+vertical grey line. Each panel has a hand-lettered heading at the top.
+
+LEFT PANEL, heading: "MARCH"
+
+At the top, a rounded box labelled "THE FINDING" containing four hand-lettered
+words in a row, evenly spaced: "cookie"  "Secure"  "staging"  "HTTP".
+
+Below it, four small square boxes in a row, each labelled "H", one under each
+word, each reached by a short downward arrow from the word above it.
+
+Below those, two slightly wider boxes labelled "H", each reached by two arrows
+coming up from the pair of small boxes above it: the first two feed the left
+one, the last two feed the right one.
+
+Below those, one box filled with the pale warm yellow, labelled "ROOT", reached
+by two arrows from the two boxes above it.
+
+At the very bottom, a long horizontal rounded bar labelled "PUBLIC LEDGER",
+with a small grey hand-lettered note beside it reading "12 MARCH". A downward
+arrow goes from the ROOT box into that bar.
+
+RIGHT PANEL, heading: "AUGUST"
+
+The same tree, same shape, same positions. Two differences only:
+
+1. In the "THE FINDING" box, the words "cookie" and "staging" are still
+   hand-lettered and readable, but the words "Secure" and "HTTP" are replaced
+   by solid black redaction bars that hide them completely.
+
+2. Beside the two "H" boxes that sit under the two blacked-out words, a small
+   grey hand-lettered note reads "the hash travels, the word stays home", with
+   a thin grey line pointing at those two boxes.
+
+The ROOT box at the bottom of this panel is filled with the same pale warm
+yellow and carries a large hand-drawn tick mark next to it, plus a grey
+hand-lettered note reading "SAME ROOT".
+
+To the right of that root, a small simple stick figure, drawn in the same
+marker style, labelled "THE REPORTER" in hand-lettered capitals, with an arrow
+from the ROOT box to the figure.
+
+Keep all lettering short, level, well spaced and clearly legible. Spell every
+label exactly as written above. Do not add any other text, title, caption,
+legend, watermark or decoration.

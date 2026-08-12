@@ -1,0 +1,94 @@
+Hand-drawn diagram in the style of a mathematician's whiteboard sketch:
+black ink on white, no colour, no shading, no grey fill, no decoration.
+Confident freehand line work, slightly wobbly rectangles, slightly curved
+arrows, hand-lettered sans-serif labels. Not a mechanical computer-drawn
+flowchart.
+
+LEGIBILITY FIRST. The picture will be shown about 800 pixels wide, so every
+word must be comfortable to read at that size: large lettering, few words,
+generous white space, no label touching a line.
+
+THE PICTURE OBEYS A STRICT VISUAL GRAMMAR. The words ARTIFACT, WORKER, FLOW
+and ACTION below are vocabulary for you, the illustrator, describing how to
+draw things. THEY ARE NOT LABELS AND MUST NEVER APPEAR ANYWHERE IN THE
+PICTURE. Do not write the word ARTIFACT above a box. Do not write the word
+WORKER above a box. The only words that may be drawn are the ones in the
+final list at the end of this brief. There are exactly three kinds of
+box and exactly two kinds of arrow, and nothing in the picture may depart
+from them.
+
+BOXES.
+- An ARTIFACT is a box drawn with a DOTTED outline. Its name is written
+  INSIDE the box, on the first line, in lowercase italics; what it contains
+  is listed under the name, one short item per line, in upright lowercase.
+  Every artifact box in the picture is drawn this way, with no exception.
+- A WORKER is a box drawn with a NORMAL SOLID outline, containing one name
+  in upright capitals and nothing else, except where stated below.
+- THE AGENT is the single box drawn with a VERY THICK SOLID outline.
+
+ARROWS.
+- A FLOW arrow is THICK and carries NO label, ever. It means an artifact
+  moves: into the agent, out of the agent, or into a worker that reads it.
+- An ACTION arrow is THIN and ALWAYS carries a lowercase verb as its label.
+  It means a worker acts on an artifact. Every thin arrow in the picture has
+  a verb; no thick arrow has any label. A thin arrow is a SINGLE STROKE of
+  the pen with a small simple arrowhead: never a hollow outlined arrow,
+  never a double line.
+
+LAYOUT, left to right, five vertical bands, all boxes in a band sharing the
+same width, their centres aligned on a common vertical axis.
+
+Band 1, far left, vertically centred: one WORKER box reading "ENGINEER" in
+capitals, and directly under that word, inside the same box, one small
+ARTIFACT box whose only content is the italic lowercase word
+"understanding".
+
+Band 2: three ARTIFACT boxes stacked vertically, of equal width:
+- "context" containing "instructions", "files", "tools";
+- "environment" containing "codebase", "knowledge base", "infrastructure";
+- "goal" containing "what we asked for".
+
+Three THIN ACTION arrows fan out from the right edge of the ENGINEER box,
+one to each of these three boxes, each carrying one lowercase verb, placed
+clear of the other arrows: "sets" to context, "maintains" to environment,
+"writes" to goal. All three are drawn identically, so that the three
+relations plainly look like three of the same thing.
+
+Band 3: THE AGENT box, a rounded rectangle of ordinary proportions, WIDER
+THAN IT IS TALL, no taller than the "environment" box beside it, centred
+vertically against band 2. It must look like the other boxes in shape and
+differ from them ONLY by the thickness of its outline: it is not a cylinder,
+not a tube, not a tall column, and its top and bottom edges are straight. It
+contains "AGENT" in very large capitals and, beneath it on its own line and
+smaller, "Ctx x Env x Goal -> Env'". The three arrows arriving from band 2
+converge on its left edge. Three THICK FLOW arrows come into
+it, one from each band 2 box, all three drawn identically and none labelled.
+
+Band 4: one ARTIFACT box named "new environment" containing "codebase'",
+"knowledge base'", "infrastructure'". One THICK FLOW arrow goes from the
+AGENT box into it.
+
+Band 5: two WORKER boxes stacked vertically, "DETERMINISTIC CHECKS" on two
+lines and "AUDITORS" with the smaller lowercase line "human or AI" beneath
+it inside the same box. One THICK FLOW arrow runs from the band 4 artifact
+to each of them, drawn identically and unlabelled. To the right of these two
+boxes, one small ARTIFACT box named "verdict" containing the single line
+"pass / fail", with one THICK FLOW arrow from each worker box into it.
+
+A single DASHED rounded boundary, the only dashed line in the whole picture,
+encloses all five bands with a generous margin. There is no second boundary,
+no nested frame and no free-standing dashed line anywhere. Its top edge
+carries, once, in medium capitals near the left corner: "AROUND THE AGENT:
+EVERYTHING YOU CAN ENGINEER". The AGENT box stands out only by the thickness
+of its own outline and by the white space around it.
+
+Use exactly these words, each exactly once: "ENGINEER", "understanding",
+"sets", "maintains", "writes", "context", "instructions", "files", "tools",
+"environment", "codebase", "knowledge base", "infrastructure", "goal",
+"what we asked for", "AGENT", "Ctx x Env x Goal -> Env'", "new environment",
+"codebase'", "knowledge base'", "infrastructure'", "DETERMINISTIC CHECKS",
+"AUDITORS", "human or AI", "verdict", "pass / fail", "AROUND THE AGENT:
+EVERYTHING YOU CAN ENGINEER". No other text anywhere: no title, no caption, no
+legend, no numbering, no signature, no category names, no words describing
+the kind of a box, nothing outside the diagram. If a word is not in the list
+above, it must not appear.

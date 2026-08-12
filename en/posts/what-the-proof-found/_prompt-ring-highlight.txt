@@ -1,0 +1,22 @@
+Reproduce the attached hand-drawn diagram EXACTLY as it is, with one single
+change: the box labelled "ONBOARD THE ENGINEER" is highlighted.
+
+Everything else must be pixel-faithful to the input: the same five rounded
+activity boxes in the same positions, the same dashed centre box "ENGINEER'S
+MENTAL MODEL", the same curved arrows, the same arrow labels ("common ground",
+"decisions", "spec + KB", "a change", "next demand", "align", "calibrate",
+"focus", "sync", "revise the spec", "Ralph loop", "extend the checks",
+"pass -> ship"), the same grey discipline labels (KNOWLEDGE ENGINEERING,
+ENGINEER ENGINEERING, SOFTWARE ENGINEERING, HARNESS ENGINEERING), the same
+hand-drawn marker style, the same white background, the same aspect ratio.
+
+Do not redraw, restyle, reposition, rename, reword or re-letter anything.
+Do not add a title, caption, legend, frame, shadow, gradient or any decoration.
+
+The highlight, and nothing else:
+- The "ONBOARD THE ENGINEER" box is filled with a flat, pale warm yellow
+  (roughly #FDE9A8), and its outline is drawn noticeably thicker than the
+  other boxes. Its text stays black and unchanged.
+- Every other element keeps its exact current appearance.
+
+The result must read as the same drawing by the same hand, with one box lit up.

@@ -1,0 +1,48 @@
+A three-panel black-ink comic strip on white, in a loose hand-drawn
+whiteboard-sketch style: thin confident pen lines, no colour, no shading, no
+grey fill, no cross-hatching. Three panels of equal size separated by simple
+vertical borders.
+
+CHARACTER PINNING, identical in all three panels and non-negotiable: the human
+is a stick figure with a plain round bare head, two dots for eyes and a simple
+mouth, a single straight line for the torso, single straight lines for arms and
+legs, and no clothing at all: no shirt, no collar, no hat, no shoes, no buttons,
+no body shading. The robot is a small boxy figure with a rectangular body, a
+rectangular head, two short straight antennae, round eyes, and the lowercase
+word "agent" written on its chest. Both keep the same proportions and features
+in every panel. The robot's arms never cross its chest: when it reaches for
+something the arm goes out sideways from the shoulder, so the word "agent"
+stays complete and legible in every panel.
+
+THE MACHINE, identical in all three panels: a plain box in simple perspective,
+labelled "CHECKER" in capitals on its front face, with THREE slots in a row on
+its top face, each with a small lowercase label written beside it, in this order
+from left to right: "statement", "program", "proof". A chute on the front face
+is where results come out.
+
+PANEL 1. The robot has posted a small sheet into the FIRST slot, the one
+labelled "statement", and the two words written on that sheet are legible: "it
+compiles". It is now posting two more sheets, marked "PROGRAM" and "PROOF", into
+the second and third slots. Out of the chute comes a sheet bearing one large
+tick. The robot looks delighted. The human stands to one side, watching, arms
+down.
+
+PANEL 2. The human holds the robot's little "it compiles" sheet in one hand,
+pinched between two fingers as if it smelled slightly, and in the other hand a
+larger sheet headed "WHAT WE MEANT" in capitals covered with several handwritten
+lines. The human's expression is flat and unimpressed. The robot stands by,
+still delighted. The machine is beside them.
+
+PANEL 3. The "WHAT WE MEANT" sheet is now in the first slot, the one labelled
+"statement", clearly posted there by the human, whose hand is still on it. The
+robot, only now, is posting its "PROGRAM" and "PROOF" sheets into the other two
+slots. Out of the chute comes a sheet bearing one large tick. Both figures look
+at that sheet. On the floor beside the machine lies the crumpled "it compiles"
+sheet.
+
+There is no speech bubble anywhere and no dialogue. The only text in the entire
+image is: "agent" on the robot's chest, "CHECKER" on the machine, the slot
+labels "statement", "program" and "proof", "it compiles" on the small sheet,
+"PROGRAM" and "PROOF" on the robot's sheets, and "WHAT WE MEANT" on the human's
+sheet. No tick or cross appears anywhere except on the sheets coming out of the
+chute. No title, no caption, no panel numbers, no signature, no other words.

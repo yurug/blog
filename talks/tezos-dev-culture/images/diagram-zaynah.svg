@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 480" width="1600" height="480">
+  <defs>
+    <marker id="arr" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#CCCCCC"/>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="30" y="35" fill="#FFFFFF" font-family="sans-serif" font-size="20" font-weight="bold">Formal Verification with Claude</text>
+
+  <!-- Legend -->
+  <rect x="780" y="12" width="16" height="16" rx="3" fill="none" stroke="#88CCFF" stroke-width="1.5"/>
+  <text x="802" y="25" fill="#AAAAAA" font-family="sans-serif" font-size="11">Data</text>
+  <rect x="850" y="12" width="16" height="16" rx="3" fill="none" stroke="#88FFAA" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <text x="872" y="25" fill="#AAAAAA" font-family="sans-serif" font-size="11">Agent + Human</text>
+  <rect x="990" y="12" width="16" height="16" rx="3" fill="none" stroke="#CC88FF" stroke-width="1.5"/>
+  <text x="1012" y="25" fill="#AAAAAA" font-family="sans-serif" font-size="11">Deterministic</text>
+  <rect x="1120" y="12" width="16" height="16" rx="3" fill="none" stroke="#FFCC88" stroke-width="1.5"/>
+  <text x="1142" y="25" fill="#AAAAAA" font-family="sans-serif" font-size="11">Output</text>
+
+  <!-- ===== INPUTS (left column) ===== -->
+
+  <!-- Data: Case Studies box -->
+  <rect x="20" y="55" width="240" height="290" rx="10" fill="none" stroke="#88CCFF" stroke-width="1.5"/>
+  <text x="140" y="78" text-anchor="middle" fill="#88CCFF" font-family="sans-serif" font-size="14" font-weight="bold">4 Case Studies</text>
+
+  <!-- Case study names -->
+  <rect x="35" y="90" width="210" height="28" rx="6" fill="none" stroke="#88CCFF" stroke-width="1" opacity="0.6"/>
+  <text x="140" y="109" text-anchor="middle" fill="#FFFFFF" font-family="sans-serif" font-size="12">Token Management</text>
+
+  <rect x="35" y="124" width="210" height="28" rx="6" fill="none" stroke="#88CCFF" stroke-width="1" opacity="0.6"/>
+  <text x="140" y="143" text-anchor="middle" fill="#FFFFFF" font-family="sans-serif" font-size="12">Operation Comparison</text>
+
+  <rect x="35" y="158" width="210" height="28" rx="6" fill="none" stroke="#88CCFF" stroke-width="1" opacity="0.6"/>
+  <text x="140" y="177" text-anchor="middle" fill="#FFFFFF" font-family="sans-serif" font-size="12">Validation &amp; Co-validity</text>
+
+  <rect x="35" y="192" width="210" height="28" rx="6" fill="none" stroke="#88CCFF" stroke-width="1" opacity="0.6"/>
+  <text x="140" y="211" text-anchor="middle" fill="#FFFFFF" font-family="sans-serif" font-size="12">Liquid Staking Token</text>
+
+  <!-- Existing material label -->
+  <text x="140" y="240" text-anchor="middle" fill="#88CCFF" font-family="sans-serif" font-size="11" font-style="italic" opacity="0.7">each with:</text>
+  <text x="140" y="258" text-anchor="middle" fill="#88CCFF" font-family="sans-serif" font-size="10" opacity="0.6">docs · papers · PBT · code · whitepapers</text>
+
+  <!-- Arrow inputs → Claude -->
+  <line x1="250" y1="170" x2="320" y2="170" stroke="#CCCCCC" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- ===== Process: Claude (agent + human) ===== -->
+  <rect x="330" y="110" width="230" height="120" rx="10" fill="none" stroke="#88FFAA" stroke-width="1.5" stroke-dasharray="6,3"/>
+  <text x="445" y="150" text-anchor="middle" fill="#88FFAA" font-family="sans-serif" font-size="15" font-weight="bold">Claude</text>
+  <text x="445" y="172" text-anchor="middle" fill="#88FFAA" font-family="sans-serif" font-size="12" opacity="0.8">generates Rocq model</text>
+  <text x="445" y="190" text-anchor="middle" fill="#88FFAA" font-family="sans-serif" font-size="12" opacity="0.8">+ proofs of properties</text>
+  <text x="445" y="218" text-anchor="middle" fill="#AAAAAA" font-family="sans-serif" font-size="10" font-style="italic">agent + human</text>
+
+  <!-- Arrow Claude → Data: Rocq model -->
+  <line x1="560" y1="170" x2="630" y2="170" stroke="#CCCCCC" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- Data: Rocq Model + Proofs -->
+  <rect x="640" y="130" width="210" height="80" rx="10" fill="none" stroke="#88CCFF" stroke-width="1.5"/>
+  <text x="745" y="162" text-anchor="middle" fill="#88CCFF" font-family="sans-serif" font-size="14" font-weight="bold">Rocq Model + Proofs</text>
+  <text x="745" y="182" text-anchor="middle" fill="#88CCFF" font-family="sans-serif" font-size="12" opacity="0.7">verified properties</text>
+
+  <!-- Arrow Rocq model → Extraction -->
+  <line x1="850" y1="155" x2="920" y2="120" stroke="#CCCCCC" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- Arrow Rocq model → PBT Enhancement -->
+  <line x1="850" y1="185" x2="920" y2="230" stroke="#CCCCCC" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- ===== TOP BRANCH: Extraction ===== -->
+
+  <!-- Process: Rocq Extraction (deterministic) -->
+  <rect x="930" y="75" width="210" height="80" rx="10" fill="none" stroke="#CC88FF" stroke-width="1.5"/>
+  <text x="1035" y="107" text-anchor="middle" fill="#CC88FF" font-family="sans-serif" font-size="14" font-weight="bold">Rocq Extraction</text>
+  <text x="1035" y="127" text-anchor="middle" fill="#CC88FF" font-family="sans-serif" font-size="12" opacity="0.8">model → executable OCaml</text>
+  <text x="1035" y="147" text-anchor="middle" fill="#AAAAAA" font-family="sans-serif" font-size="10" font-style="italic">deterministic</text>
+
+  <!-- Arrow → Output: Verified OCaml -->
+  <line x1="1140" y1="115" x2="1210" y2="115" stroke="#CCCCCC" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- Output: Verified OCaml -->
+  <rect x="1220" y="85" width="220" height="60" rx="10" fill="none" stroke="#FFCC88" stroke-width="1.5"/>
+  <text x="1330" y="112" text-anchor="middle" fill="#FFCC88" font-family="sans-serif" font-size="14" font-weight="bold">Executable Model</text>
+  <text x="1330" y="130" text-anchor="middle" fill="#FFCC88" font-family="sans-serif" font-size="11" opacity="0.8">OCaml extracted from Rocq</text>
+
+  <!-- ===== BOTTOM BRANCH: PBT Enhancement ===== -->
+
+  <!-- Process: PBT Enhancement (deterministic) -->
+  <rect x="930" y="200" width="210" height="80" rx="10" fill="none" stroke="#CC88FF" stroke-width="1.5"/>
+  <text x="1035" y="230" text-anchor="middle" fill="#CC88FF" font-family="sans-serif" font-size="14" font-weight="bold">PBT Enhancement</text>
+  <text x="1035" y="250" text-anchor="middle" fill="#CC88FF" font-family="sans-serif" font-size="12" opacity="0.8">model-driven testing</text>
+  <text x="1035" y="270" text-anchor="middle" fill="#AAAAAA" font-family="sans-serif" font-size="10" font-style="italic">deterministic</text>
+
+  <!-- Arrow from Executable Model down-right around Stronger PBT box, then left into PBT Enhancement -->
+  <polyline points="1460,115 1500,115 1500,340 1035,340 1035,280"
+            fill="none" stroke="#CCCCCC" stroke-width="1" stroke-dasharray="4,3"
+            marker-end="url(#arr)"/>
+  <text x="1270" y="358" text-anchor="middle" fill="#999999" font-family="sans-serif" font-size="10" font-style="italic">executable model improves PBT</text>
+
+  <!-- Arrow → Output: Stronger PBT -->
+  <line x1="1140" y1="240" x2="1210" y2="240" stroke="#CCCCCC" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- Output: Stronger PBT Suite -->
+  <rect x="1220" y="210" width="220" height="60" rx="10" fill="none" stroke="#FFCC88" stroke-width="1.5"/>
+  <text x="1330" y="237" text-anchor="middle" fill="#FFCC88" font-family="sans-serif" font-size="14" font-weight="bold">Stronger PBT Suite</text>
+  <text x="1330" y="255" text-anchor="middle" fill="#FFCC88" font-family="sans-serif" font-size="11" opacity="0.8">systematic properties</text>
+
+</svg>
